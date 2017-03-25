@@ -3,8 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import MintUI from 'mint-ui'
+import VueResource from 'vue-resource'
+import './assets/css/common.css'
 
 Vue.config.productionTip = false
+
+Vue.use(MintUI)
+Vue.use(VueResource)
 
 /* eslint-disable no-new */
 new Vue({

@@ -27,6 +27,7 @@ module.exports = {
   },
   module: {
     rules: [
+      // { test: /\.css$/, loader: 'style!css!px2rem?remUnit=75&remPrecision=8' },
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
