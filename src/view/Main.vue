@@ -14,22 +14,22 @@
       </div>
       <mt-loadmore :top-method="loadTop" :bottom-all-loaded="allLoaded" ref="loadmore">
         <ul v-for="item in list">
-            <router-link to="/detail">
-          <div class="fund_name">
-            <span>{{item.fields.name}}</span>
-            (代码: <span>{{item.fields.code}}</span>)
-            <span> 推荐排名： {{item.fields.rank}}</span>
-          </div>
+            <router-link :to="{ name: 'Detail', params: { data: item }}">
+              <div class="fund_name">
+                <span>{{item.fields.name}}</span>
+                (代码: <span>{{item.fields.code}}</span>)
+                <span> 推荐排名： {{item.fields.rank}}</span>
+              </div>
+              <div class="mainArea">
+              <p>三年夏普比率：{{ item.fields.threeYearSharp }}</p>
+              <p>三年风险系数: {{ item.fields.threeYearRisk }}</p>
+              <p> 三年标准差: {{ item.fields.threeYearStandard }}</p>
+              </div>
+              <div>
+                  <span>基金经理：{{ item.fields.manager }} ，任职时间：{{ item.fields.manageStart }}</span><br/>
+                  <span>管理期收益：{{ item.fields.manageAchive }}，基金成立时间：{{ item.fields.establishDate }}</span>
+              </div>
             </router-link>
-          <div class="mainArea">
-          <p>三年夏普比率：{{ item.fields.threeYearSharp }}</p>
-          <p>三年风险系数: {{ item.fields.threeYearRisk }}</p>
-          <p> 三年标准差: {{ item.fields.threeYearStandard }}</p>
-          </div>
-          <div>
-              <span>基金经理：{{ item.fields.manager }} ，任职时间：{{ item.fields.manageStart }}</span><br/>
-              <span>管理期收益：{{ item.fields.manageAchive }}，基金成立时间：{{ item.fields.establishDate }}</span>
-          </div>
           <hr/>
         </ul>
       </mt-loadmore>
@@ -60,7 +60,7 @@ export default {
         return
       }
       // GET /someUrl
-      this.$http.get('http://localhost:8000/mutual_fund/fetch_fundrecomend/').then(response => {
+      this.$http.get('http://fund.xy-kaka.cn/mutual_fund/fetch_fundrecomend/').then(response => {
         // get body data
         let respList = response.body
 
